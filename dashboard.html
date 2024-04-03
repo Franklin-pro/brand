@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin</title>
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+   <div class="dashboard-container">
+    <div class="dashboard">
+        
+        <div class="dashboard-left">
+        <h1 class="heads">FRANKLIN-PRO</h1>
+        <div class="title">
+            <a href="#" class="inside" onclick="dashboard()"><i class="fa-solid fa-gauge"></i>DASHBOARD</a>
+            <a href="#" class="inside"><i class="fa-solid fa-users"></i>USER</a>
+            <a href="#" class="inside"><i onclick="port()" class="fa-solid fa-newspaper"></i>PORTFOLIO</a>
+            <a href="#" class="inside" onclick="blog()"><i class="fa-solid fa-blog"></i>BLOGS</a>
+            <a href="#" class="inside"><i class="fa-solid fa-thumbs-down"></i>DISLIKES</a>
+            <a href="#" class="inside"><i class="fa-solid fa-thumbs-up"></i>LIKES</a>
+            <a href="#" class="inside"><i class="fa-solid fa-comment"></i>COMMENTS</a>
+            <a href="#" class="inside" onclick="messages()"><i class="fa-regular fa-message"></i>MESSAGES</a>
+            <a href="#" class="inside"><i class="fa-solid fa-gear"></i>SETTINGS</a>
+        
+        </div>
+        <div class="button">
+            <a href="#" class="inside"><i class="fa-solid fa-arrow-right-from-bracket"></i>LOGOUT</a>
+        </div>
+        </div>
+        <div class="dashboard-right" id="dash">
+            <nav class="yuu">
+             <div class="profile">
+                <img src="./images/cee.jpg" alt="">
+             </div>
+             <div class="icons">
+                <i class="fa-brands fa-twitter" style="color: #ffffff;"></i>
+                <i class="fa-brands fa-github" style="color: #ffffff;"></i>
+             </div>
+            </nav>
+
+           <div class="blog-post">
+            <div class="blogx">
+              <form action="your_server_endpoint" method="post" id="form" enctype="multipart/form-data">
+
+                  <h1>Blogs</h1>
+                  <label for="blog-title">BLOGS-TITLE</label>
+                  <input type="text" name="blog-title" placeholder="enter blog title" class="field" id="blogTitle" required>
+          
+                  <label for="blog-description">BLOGS-DESCRIPTION</label>
+                  <input type="text" name="blog-description" placeholder="enter blog-description" class="field" id="blogDescription" required>
+          
+                  <label for="imageInput">BLOGS-image</label>
+                  <input type="file" name="imageInput" class="field" id="blogImage" accept="image/*" placeholder="upload blog-Image">
+          
+                  <div class="btnw">
+                    <button type="submit" class="btn-a" id="submitButton">POST-BLOGS</button>
+                </div>
+              </form>
+          </div>
+          
+              <div class="table" id="table">
+                <h1>USER-TABLE</h1>
+                <table border="1">
+                   <tr>
+                        <th>NO</th>
+                        <th>Blog-Title</th>
+                        <th>Blog-Description</th>
+                        <th>Blog-Image</th>
+                        <th colspan="2">option</th>
+                    </tr>
+
+                </table>
+               </div>
+            </div> 
+
+            <div class="display-message" id="messages">
+             <div class="spinner"></div>
+            </div>
+
+
+
+            <div class="inside-dash">
+                <div class="card-container">
+                    <div class="card" id="card">
+                        <i class="fa-solid fa-blog" style="color: #ffffff;"></i>
+                        <b>1,000</b>
+                    <h1>number of blogs</h1>
+                    </div>
+                    <div class="card" id="carduser">
+                        <i class="fa-solid fa-users" style="color: #ffffff;"></i>
+                        <b>1,000</b>
+                    <h1>number of new user</h1>
+                    </div>
+                </div>
+               <div class="table">
+                <h1>USER-TABLE</h1>
+                <table border="1" id="tableUser">
+                    <tr>
+                        <th>NO</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th colspan="2">option</th>
+                    </tr>
+                 
+
+                </table>
+               </div>
+               <!-- <div class="table">
+                <h1>CLIENT-TABLE</h1>
+                <table border="1">
+                    <tr>
+                        <th>NO</th>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>Email</th>
+                        <th>project-name</th>
+                        <th>which part i do?</th>
+                        <th colspan="2">option</th>
+                    </tr>
+                  <tr>
+                    <td>01</td>
+                    <td>Franklin</td>
+                    <td>package</td>
+                    <td>franklinpackage@gmail.com</td>
+                    <td>lebuze organisation</td>
+                    <td>front-end</td>
+                    <td>delete</td>
+                    <td>update</td>
+                  </tr>
+                  <tr>
+                    <td>02</td>
+                    <td>king</td>
+                    <td>pazzo</td>
+                    <td>franklinpackage@gmail.com</td>
+                    <td>alight organisation</td>
+                    <td>backend-end</td>
+                    <td>delete</td>
+                    <td>update</td>
+                  </tr>
+                  <tr>
+                    <td>03</td>
+                    <td>lui</td>
+                    <td>cliff</td>
+                    <td>franklinpackage@gmail.com</td>
+                    <td>lexous hotel</td>
+                    <td>ui/ux and front-end</td>
+                    <td>delete</td>
+                    <td>update</td>
+                  </tr>
+
+                </table>
+               </div> -->
+            </div>
+<div class="portfolio-container">
+  <h1>PORTFOLIO POST</h1>
+  <div class="ports">
+    <div class="texts">
+      <form action="#" id="fors">
+        <label for="title">Portfolio-title:</label>
+        <input type="text" name="title" placeholder="Portfolio-title" class="field" id="portTitle">
+        <label for="summary">Portfolio-Summary:</label>
+        <input type="text" name="summary" placeholder="Portfolio-summary"class="field" id="portSummary">
+        <label for="image">Portfolio-Image:</label>
+        <input type="file" name="image" class="field" id="portImage">
+        
+        <div class="btnw">
+          <button type="submit" class="btn-a">POST-PORTFOLIO</button>
+      </div>
+      </form>
+    </div>
+  </div>
+  <div class="table">
+    <h1>USER-TABLE</h1>
+    <table border="1">
+       <tr>
+            <th>NO</th>
+            <th>PORTFOLIO-Title</th>
+            <th>PORTFOLIO-Description</th>
+            <th>PORTFOLIO-Image</th>
+            <th colspan="2">option</th>
+        </tr>
+
+    </table>
+   </div>
+</div>
+           
+        </div>
+    </div>
+   </div>
+   <script src="./javascript/children.js"></script>
+   <script src="./javascript/getAllBlogs.js"></script>
+   <script src="./javascript/getAllUser.js"></script>
+   <script src="./javascript/blog.js"></script>
+   <script src="./javascript/getAllMessage.js"></script>
+   <script src="./javascript/displayMessage.js"></script>
+</body>
+</html>

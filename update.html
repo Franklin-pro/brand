@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>admin</title>
+    <link rel="stylesheet" href="./css/dashboard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard">
+            <div class="dashboard-left">
+                <!-- Left sidebar content -->
+            </div>
+            <div class="dashboard-right" id="dash">
+                <div class="blog-posts">
+                    <div class="blogx">
+                        <form action="#" id="form" enctype="multipart/form-data" name="updateform">
+
+                            <h1>Blogs</h1>
+                            <input type="hidden" name="id" />
+                            <label for="blog-title">BLOGS-TITLE</label>
+                            <input type="text" name="title" placeholder="enter blog title" class="field" id="blogTitle" required />
+                            <label for="blog-description">BLOGS-DESCRIPTION</label>
+                            <input type="text" name="description" placeholder="enter blog-description" class="field" id="blogDescription" required />
+                            <label for="imageInput">BLOGS-image</label>
+                            <input type="file" name="photo" class="field" id="blogImage" accept="image/*" placeholder="Upload blog image" />
+                            <span id="fileInfo"></span>
+                            <div class="btnw">
+                                <button type="submit" class="btn-a" id="submitButton">UPDATE-BLOGS</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="display-message" id="messages">
+                    <div class="message" id="message"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+       window.addEventListener("DOMContentLoaded", async () => {
+    try {
+        const id = new URLSearchParams(window.location.search).get("id");
+        const response = await fetch(`https://branding-nhqf.onrender.com/blog/` + id);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch data: ${response.status}`);
+        }
+        const data = await response.json();
+        document.querySelector('input[name="id"]').value = data.data._id;
+        document.getElementById("blogTitle").value = data.data.blogTitle;
+        document.getElementById("blogDescription").value = data.data.blogDescription;
+        document.getElementById("blogImage").src = data.blogImage;
+    } catch (error) {
+        console.error('Error:', error);
+    }
+});
+
+window.addEventListener("DOMContentLoaded", async () => {
+    try {
+        const id = new URLSearchParams(window.location.search).get("id");
+        const response = await fetch(`https://branding-nhqf.onrender.com/blog/` + id);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch data: ${response.status}`);
+        }
+        const data = await response.json();
+        document.querySelector('input[name="id"]').value = data.data._id;
+        document.getElementById("blogTitle").value = data.data.blogTitle;
+        document.getElementById("blogDescription").value = data.data.blogDescription;
+        document.getElementById("blogImage").src = data.blogImage;
+    } catch (error) {
+        console.error('Error:', error);
+    }
+});
+
+async function updateBlogPost(event) {
+    const tokenz = window.localStorage.getItem("token");
+    event.preventDefault(); 
+    const form = event.target;
+    const formData = new FormData(form); 
+
+    try {
+        const id = formData.get('id'); 
+       
+        const response = await fetch(`https://branding-nhqf.onrender.com/blog/${id}`, {
+            method: 'PUT', 
+            "andela":tokenz, 
+            body: formData
+            
+        });
+
+        if (response.ok) {
+            alert("Blog post updated successfully");
+        } else {
+            alert("Failed to update blog post");
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert("An error occurred while updating the blog post");
+    }
+}
+
+const form = document.getElementById("form");
+form.addEventListener("submit", updateBlogPost);
+
+    </script>
+</body>
+</html>
